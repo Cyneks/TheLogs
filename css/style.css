@@ -1,0 +1,271 @@
+:root {
+    --site_bg: #ffffff;
+    --bg: #f5f5dc;
+    --text: #1a1a1a;
+    --headers: #e95d00;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --site_bg: #000000;
+        --bg: #1a1a1a;
+        --text: #f5f5dc;
+        --headers: #e95d00;
+    }
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.6;
+    background: var(--site_bg);
+}
+
+body {
+    margin: auto;
+    padding: 0.5em;
+}
+
+.content {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "title"
+        "navigation"
+        "main"
+        "sidebar"
+        "footer";
+}
+
+.content > * {
+    min-width: 0;
+}
+
+.header {
+    grid-area: title;
+}
+
+.navigation {
+    grid-area: navigation;
+}
+
+.main-content { grid-area: main; }
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+header, nav, main, aside, footer {
+    background: var(--bg)
+}
+
+.navigation ul {
+    list-style: none;
+    font-family: 'Arvo', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.navigation li a {
+    display: block;
+    color: var(--text);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navigation li a:hover {
+    color: white;
+    background-color: rgb(233, 93, 0);
+}
+
+.navigation li a:active {
+    color: black;
+    background-color: white;
+}
+
+.sidebar a:link {
+    color: red;
+}
+
+.sidebar a:visited {
+    color: aqua;
+}
+
+a:focus-visible {
+    outline: 2px solid rgb(233, 93, 0);
+    border-radius: 3px;
+}
+
+footer {
+    font-size: 75%;
+    color: #9b9b9b;
+    padding: 5px 0;
+    text-align: center;
+}
+
+main img {
+    float: left;
+    padding: 1em;
+}
+
+video, img {
+    max-width: 100%;
+    height: auto;
+}
+
+audio {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    font-family: "Arvo", sans-serif;
+    letter-spacing: 1px;
+    padding: 0.5em;
+    color: var(--text);
+}
+
+h1::first-letter, h2::first-letter, h3::first-letter {
+    color: var(--headers)
+}
+
+p, dl, form, table, blockquote, pre, figcaption {
+    font: 1em sans-serif;
+    letter-spacing: normal;
+    padding: 1em;
+    color: var(--text)
+}
+
+form #användarnamn {
+    background-image: url("../assets/user.svg");
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    background-size: 1em 1em;
+    padding-left: 2em;
+}
+
+form #email {
+    background-image: url("../assets/email.svg");
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    background-size: 1em 1em;
+    padding-left: 2em;
+}
+
+form #hemsida {
+    background-image: url("../assets/house.svg");
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    background-size: 1em 1em;
+    padding-left: 2em;
+}
+
+li  {
+    color: var(--text)
+}
+
+li::marker {
+    color: var(--headers)
+}
+
+table, th, td {
+    border: 1px solid;
+    table-layout: auto;
+    width: 95%;
+    border-color: var(--text);
+    border-collapse: collapse;
+    text-align: center;
+    justify-self: center;
+}
+
+#tables {
+    overflow-x: auto;
+}
+
+caption {
+    padding: 0.5em;
+}
+
+input, label, textarea, fieldset {
+    margin: 0.5em;
+    resize: none;
+}
+
+input:focus, textarea:focus {
+    outline: 2px solid var(--headers);
+}
+
+select, input[type="checkbox"], input[type="radio"] {
+    cursor: pointer;
+}
+
+.highlight {
+    background: yellow;
+}
+
+#calc-output {
+    margin: 0.5em;
+    font-weight: bold;
+    color: var(--text)
+}
+
+@media only screen and (max-width: 350px) {
+    .content {
+        grid-template-columns: 240px;
+        justify-content: center;
+    }
+
+    .navigation ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Plattor */
+@media only screen and (min-width: 480px) {
+    .content {
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto auto 3fr auto;
+        grid-template-areas:
+            "title title"
+            "main navigation"
+            "main sidebar"
+            "footer footer";
+    }
+
+    .navigation ul {
+        flex-direction: column;
+    }
+}
+
+
+/* Laptops */
+@media only screen and (min-width: 1024px) {
+    .content {
+        grid-template-columns: 1fr 1fr 2fr;
+        grid-template-areas:
+            "title title title"
+            "navigation main main"
+            "sidebar main main"
+            "footer footer footer";
+    }
+}
+
+/* Desktops */
+@media only screen and (min-width: 1921px) {
+    .content {
+        grid-template-columns: 280px 280px 560px;
+        justify-content: center;
+    }
+}
